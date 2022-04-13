@@ -34,7 +34,7 @@ export default class ForgotPasswordsController {
 
     const userKey = await UserKey.findByOrFail('key', key)
 
-    userKey.load('user')
+    await userKey.load('user')
 
     userKey.user.merge({ password })
 

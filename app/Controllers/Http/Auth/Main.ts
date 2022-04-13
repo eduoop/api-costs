@@ -9,7 +9,15 @@ export default class AuthController {
       expiresIn: '30 days'
     })
 
-    return token
+    const user = {
+      email,
+      password
+    }
+
+    return {
+      token,
+      user
+    }
   }
 
   public async destroy({ auth }: HttpContextContract) {
