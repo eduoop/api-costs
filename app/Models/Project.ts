@@ -2,10 +2,6 @@ import { DateTime } from 'luxon'
 import { BaseModel, column, belongsTo, BelongsTo } from '@ioc:Adonis/Lucid/Orm'
 import { User } from 'App/Models'
 
-//       table.string('service_name')
-//       table.string('service_cost')
-//       table.string('service_description')
-
 export default class Project extends BaseModel {
   @column({ isPrimary: true })
   public id: number
@@ -18,15 +14,6 @@ export default class Project extends BaseModel {
 
   @column()
   public category: string
-
-  @column()
-  public serviceName: string
-
-  @column()
-  public serviceCost: 2000
-
-  @column()
-  public serviceDescription: string
 
   @column()
   public userId: number

@@ -9,9 +9,6 @@ export default class Projects extends BaseSchema {
       table.string('name')
       table.integer('budget')
       table.string('category')
-      table.string('service_name')
-      table.string('service_cost')
-      table.string('service_description')
       table
         .integer('user_id')
         .unsigned()
