@@ -8,8 +8,14 @@ export default class ProjectsController {
     const user = auth.user!
 
     await user.load('projects', (query) => {
+      query.withCount('services')
+
       query.orderBy('id', 'desc')
       query.select(['id', 'name', 'budget', 'category'])
+
+      query.preload('services', (query) => {
+        query.select(['userId', 'id', 'name', 'cost', 'description'])
+      })
     })
 
     return user.projects
