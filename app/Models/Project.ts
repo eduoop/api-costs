@@ -24,6 +24,9 @@ export default class Project extends BaseModel {
   public category: string
 
   @column()
+  public cost: number
+
+  @column()
   public userId: number
 
   @belongsTo(() => User)

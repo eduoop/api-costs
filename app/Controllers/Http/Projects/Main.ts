@@ -11,7 +11,7 @@ export default class ProjectsController {
       query.withCount('services')
 
       query.orderBy('id', 'desc')
-      query.select(['id', 'name', 'budget', 'category'])
+      query.select(['id', 'name', 'budget', 'cost', 'category'])
 
       query.preload('services', (query) => {
         query.select(['userId', 'id', 'name', 'cost', 'description'])
@@ -19,6 +19,18 @@ export default class ProjectsController {
     })
 
     return user.projects
+  }
+
+  public async show({ params, auth, response }: HttpContextContract) {
+    const projectId = await params.id
+    const projeto = Project.findOrFail(projectId)
+    const projectUSerId = (await projeto).userId
+
+    if (auth.user!.id !== projectUSerId) {
+      return response.unauthorized()
+    }
+
+    return projeto
   }
 
   public async store({ request, auth }: HttpContextContract) {

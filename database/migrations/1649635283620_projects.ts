@@ -8,6 +8,7 @@ export default class Projects extends BaseSchema {
       table.increments('id')
       table.string('name')
       table.integer('budget')
+      table.integer('cost')
       table.string('category')
       table
         .integer('user_id')

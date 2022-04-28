@@ -18,7 +18,7 @@ export default class Service extends BaseModel {
   @column()
   public projectId: number
 
-  @column({ serializeAs: null })
+  @column()
   public userId: number
 
   @belongsTo(() => Project)
